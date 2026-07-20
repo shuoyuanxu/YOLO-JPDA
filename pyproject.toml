@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yolo-jpda"
+version = "1.0.0"
+description = "Multi-object tracking by YOLO detection and joint probabilistic data association"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+keywords = ["tracking", "jpda", "yolo", "kalman-filter", "multi-object-tracking"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+dependencies = [
+    "numpy>=1.20",
+    "scipy>=1.5",
+    "opencv-python>=4.2",
+    "pyyaml>=5.4",
+]
+
+[project.optional-dependencies]
+yolo = ["ultralytics>=8.0"]
+eval = ["motmetrics>=1.2"]
+
+[project.scripts]
+yolo-jpda = "yolo_jpda.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"

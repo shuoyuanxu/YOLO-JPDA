@@ -1,0 +1,43 @@
+# Benchmarking against a MOT-challenge sequence.
+#
+# Tracks the provided detections and scores them, so no detector and no
+# deep-learning dependencies are involved.
+#
+#   python main.py -c config/mot17.yaml
+
+mode: evaluate
+
+input:
+  images: data/MOT17-13-FRCNN/img1
+  pattern: "*.jpg"
+
+detector:
+  backend: file
+  detections: data/MOT17-13-FRCNN/det/det.txt
+
+tracker:
+  score_threshold: 0.1
+  gate_confidence: 0.99
+  detection_probability: 0.9
+  expected_false_alarms: 5.0
+  image_size: [1920, 1080]
+  # Pedestrians stop and start, so terminate less eagerly than the default.
+  max_misses: 30
+  min_hits: 3
+  max_speed: 20.0
+
+motion:
+  dt: 1.0
+  # People change direction constantly; trust the motion model less than
+  # the vehicle defaults do.
+  process_noise: 0.5
+  measurement_noise_var: 4.0
+
+output:
+  dir: output/MOT17-13
+  video: false
+  mot: true
+  quiet: true
+
+evaluate:
+  ground_truth: data/MOT17-13-FRCNN/gt/gt.txt

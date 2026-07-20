@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "YOLO-JPDA"
+abstract: >-
+  Multi-object tracking combining a YOLO detector with a clustered Joint
+  Probabilistic Data Association filter.
+repository-code: "https://github.com/shuoyuanxu/YOLO-JPDA"
+license: MIT
+authors:
+  - family-names: Xu
+    given-names: Shuoyuan
+  - family-names: Savvaris
+    given-names: Al
+  - family-names: He
+    given-names: Shaoming
+  - family-names: Shin
+    given-names: Hyo-Sang
+  - family-names: Tsourdos
+    given-names: Antonios
+
+preferred-citation:
+  type: conference-paper
+  title: >-
+    Real-time Implementation of YOLO+JPDA for Small Scale UAV Multiple Object
+    Tracking
+  authors:
+    - family-names: Xu
+      given-names: Shuoyuan
+    - family-names: Savvaris
+      given-names: Al
+    - family-names: He
+      given-names: Shaoming
+    - family-names: Shin
+      given-names: Hyo-Sang
+    - family-names: Tsourdos
+      given-names: Antonios
+  collection-title: >-
+    2018 International Conference on Unmanned Aircraft Systems (ICUAS)
+  conference:
+    name: 2018 International Conference on Unmanned Aircraft Systems (ICUAS)
+    city: Dallas
+    region: Texas
+    country: US
+  publisher:
+    name: IEEE
+  year: 2018
+  start: 1336
+  end: 1341
+  doi: 10.1109/ICUAS.2018.8453398

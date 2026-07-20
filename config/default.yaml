@@ -1,0 +1,61 @@
+# YOLO-JPDA configuration.
+#
+#   python main.py -c config/default.yaml
+#
+# Any value here can be overridden on the command line for a one-off run;
+# run `python main.py --help` for the list.
+
+# detect | track | replay | evaluate
+mode: track
+
+input:
+  # Set exactly one of images or video.
+  images: data/my_sequence/img1
+  video: null
+  pattern: "*.jpg"        # which files to take from `images`
+
+detector:
+  backend: yolo           # yolo | file | legacy-yolov1
+  weights: yolov8n.pt     # bare name downloads on first use; or a path in model/
+  confidence: 0.25        # detector's own confidence floor
+  device: null            # null = auto; or cpu, cuda:0
+  classes: [car, bus, truck, motorcycle, bicycle]   # null keeps every class
+
+  # Used by backend `file`, and by the replay and evaluate modes.
+  detections: null        # e.g. data/my_sequence/det/det.txt
+
+tracker:
+  score_threshold: 0.15   # drop detections below this before tracking
+
+  # Validation gate. Give a confidence and the chi-squared radius is derived,
+  # or set gate_threshold directly as a Mahalanobis distance.
+  gate_confidence: 0.99
+  # gate_threshold: 5.48
+
+  detection_probability: 0.95   # P_D: expected detector recall
+
+  # Clutter density. Give false alarms per frame plus the image size and the
+  # density is derived, or set clutter_density directly.
+  expected_false_alarms: 3.0
+  image_size: [1920, 1080]
+  # clutter_density: 1.5e-6
+
+  max_misses: 45          # frames a track coasts unassociated before dying
+  min_hits: 3             # associations before a track is reported
+  max_speed: 7.0          # px/step cap when seeding velocities
+
+motion:
+  dt: 1.0                 # time between frames
+  process_noise: 0.1      # raise for manoeuvring targets
+  measurement_noise_var: 7.0   # detector centre noise, pixels squared
+
+output:
+  dir: output
+  video: true             # write tracked.mp4
+  mot: true               # write tracks.txt in MOT format
+  side_by_side: false     # render detections beside tracks
+  fps: 25
+  quiet: false
+
+evaluate:
+  ground_truth: null      # e.g. data/my_sequence/gt/gt.txt

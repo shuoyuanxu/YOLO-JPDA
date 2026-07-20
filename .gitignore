@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Tooling
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+.mypy_cache/
+
+# IDE
+.idea/
+.vscode/
+
+# Kept as empty directories: contents ignored, folder tracked
+data/*
+!data/.gitkeep
+model/*
+!model/.gitkeep
+
+# Outputs
+*.mp4
+*.avi
+*.wmv
+output/
+results/
