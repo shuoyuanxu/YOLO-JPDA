@@ -1,5 +1,6 @@
 # YOLO-JPDA
 <img width="640" height="360" alt="yolo-jpda-demo" src="https://github.com/user-attachments/assets/3cefd9c8-903d-4eb4-9fb4-9ca2eb129f56" />
+<img width="640" height="360" alt="vehicle-counting" src="https://github.com/user-attachments/assets/1a4b2570-aa4d-4253-b0b7-bc53c37e55a9" />
 
 Vibe-coded cleaned code for [*Real-time Implementation of YOLO+JPDA for Small
 Scale UAV Multiple Object Tracking*](https://doi.org/10.1109/ICUAS.2018.8453398)
